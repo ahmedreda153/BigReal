@@ -1,6 +1,6 @@
 #include "BigReal.h"
 #include <iostream>
- 
+
 #include <string>
 using namespace std;
 void BigReal::getNum()
@@ -12,6 +12,10 @@ BigReal::BigReal(double realNumber = 0.0)
 {
     cout << "Default constructor" << endl;
     string str = to_string(realNumber);
+    while (str[str.length() - 1] == '0')
+    {
+        str.erase(str.length() - 1);
+    }
     int index = str.find('.');
     beforePoint.setNumber(str.substr(0, index));
     afterPoint.setNumber(str.substr(index + 1, str.length() - 1));
@@ -66,7 +70,7 @@ BigReal BigReal::operator+(BigReal other)
 {
     BigDecimalInt c("2");
     BigReal result;
-        int x = beforePoint.sign();
+    int x = beforePoint.sign();
     int y = other.beforePoint.sign();
     int carry = 0;
     BigDecimalInt a("1");
@@ -153,65 +157,86 @@ BigReal BigReal::operator-(BigReal other)
     return result;
 }
 
-bool BigReal:: operator< (BigReal other){
-    if(beforePoint<other.beforePoint){
-      return true;
+bool BigReal::operator<(BigReal other)
+{
+    if (beforePoint < other.beforePoint)
+    {
+        return true;
     }
-    else if(beforePoint==other.beforePoint){
-      if(afterPoint<other.afterPoint){
-         return true;
-      }
-      else{
-         return false;
-      }
+    else if (beforePoint == other.beforePoint)
+    {
+        if (afterPoint < other.afterPoint)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    else{
-      return false;
-    }
-}
-bool BigReal:: operator>(BigReal other){
-    if(beforePoint>other.beforePoint){
-      return true;
-    }
-    else if(beforePoint==other.beforePoint){
-      if(afterPoint>other.afterPoint){
-         return true;
-      }
-      else{
-         return false;
-      }
-    }
-    else{
-      return false;
+    else
+    {
+        return false;
     }
 }
-bool BigReal::operator==(BigReal other){
-    if(beforePoint==other.beforePoint && afterPoint==other.afterPoint){
-      return true;
+bool BigReal::operator>(BigReal other)
+{
+    if (beforePoint > other.beforePoint)
+    {
+        return true;
     }
-    else{
-      return false;
+    else if (beforePoint == other.beforePoint)
+    {
+        if (afterPoint > other.afterPoint)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
     }
 }
-// int BigReal::size(){
-//     return beforePoint.size()+afterPoint.size();
+bool BigReal::operator==(BigReal other)
+{
+    if (beforePoint == other.beforePoint && afterPoint == other.afterPoint)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
-// }
+int BigReal::size()
+{
+    cout << beforePoint << endl << afterPoint << endl; // test
+    return beforePoint.size() + afterPoint.size();
+}
 
-
-int BigReal::sign(){
-    if(beforePoint.sign()==1){
-      return 1;
+int BigReal::sign()
+{
+    if (beforePoint.sign() == 1)
+    {
+        return 1;
     }
-    else{
-      return 0;
+    else
+    {
+        return 0;
     }
 }
-ostream& operator << (ostream& out, BigReal num){
+ostream &operator<<(ostream &out, BigReal num)
+{
     out << num.beforePoint << "." << num.afterPoint;
     return out;
 }
-istream& operator >> (istream& in, BigReal& num){
+istream &operator>>(istream &in, BigReal &num)
+{
     string realNumber;
     in >> realNumber;
     int index = realNumber.find('.');
@@ -219,4 +244,3 @@ istream& operator >> (istream& in, BigReal& num){
     num.afterPoint.setNumber(realNumber.substr(index + 1, realNumber.length() - 1));
     return in;
 }
-
