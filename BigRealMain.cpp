@@ -20,6 +20,7 @@ int main()
     a.getNum();
     b.getNum();
     d.getNum();
+    
     e.getNum();
     f.getNum();
     g.getNum();
