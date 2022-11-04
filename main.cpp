@@ -11,6 +11,7 @@ such as: +, -, <, and >.
  */
 
 #include "BigDecimalIntClass.h"
+#include "BigDecimalIntClass.cpp"
 
 int main() {
 /*    string n1 = "-34", n2 = "100", n3 = "-500", n4 = "7";
@@ -124,21 +125,11 @@ int main() {
     cout << (test9 > test10) << "\n";
     cout << test9.Sign() << "\n";
     cout << test10.size() << "\n";*/
-    string s1,s2;
-    while(cin>>s1>>s2){
-        BigDecimalInt a(s1),b(s2);
-        cout<<a+b<<endl;
-        cout<<a-b<<endl;
-        cout<<b-a<<endl;
-        cout << (a < b) << "\n";
-        cout << (a > b) << "\n";
-        cout << a.sign() << "\n";
-        cout << b.size() << "\n";
-        cout << a.getNumber() << "\n";
-        a.setNumber("100");
-        cout << a.getNumber() << "\n";
-    }
-
+    BigDecimalInt a("10");
+    BigDecimalInt b("90");
+    BigDecimalInt c = a + b;
+    cout << c.size()<< endl;
+    cout << a+b;
     return 0;
 }
 

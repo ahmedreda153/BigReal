@@ -323,7 +323,7 @@ int BigDecimalInt :: size()
 // function returns the sign.
 int BigDecimalInt :: sign()
 {
-    if (signNumber == '+')
+    if (signNumber == '-')
     {
         return 1;
     }
@@ -331,6 +331,7 @@ int BigDecimalInt :: sign()
     {
         return 0;
     }
+   
 }
 
 // operator << overloading function.
