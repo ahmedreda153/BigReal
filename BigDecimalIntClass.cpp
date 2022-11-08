@@ -23,7 +23,7 @@ bool BigDecimalInt :: checkValidInput(string input)
 void BigDecimalInt :: setNumber(string num)
 {
     bool validNumber = checkValidInput(num);
-    if(validNumber)
+    if(true)
     {
         number = num;
         if(number[0] == '+')
@@ -323,7 +323,7 @@ int BigDecimalInt :: size()
 // function returns the sign.
 int BigDecimalInt :: sign()
 {
-    if (signNumber == '+')
+    if (signNumber == '-')
     {
         return 1;
     }
