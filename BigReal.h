@@ -25,6 +25,19 @@ public:
     BigReal(BigReal &&other);           // Move constructor
     BigReal &operator=(BigReal &other); // Assignment operator
     BigReal &operator=(BigReal &&other); // Move assignment operator
+    BigReal operator+(BigReal other);
+    BigReal operator-(BigReal other);
+    void sum(BigReal &res, BigReal &other);
+    bool operator<(BigReal other);
+    bool operator>(BigReal other);
+    bool operator==(BigReal other);
+    int size();
+    int sign();
+    friend ostream& operator << (ostream& out, BigReal num);
+   // friend istream& operator >> (istream& out, BigReal num);
+    friend istream& operator >> (istream& in, BigReal& num);
+
 };
+
 
 #endif
