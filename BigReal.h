@@ -25,8 +25,6 @@ public:
     BigReal(BigReal &&other);           // Move constructor
     BigReal &operator=(BigReal &other); // Assignment operator
     BigReal &operator=(BigReal &&other); // Move assignment operator
-    BigReal operator + (BigReal other);
-    BigReal operator - (BigReal other);
-    void sum (BigReal & result , BigReal &other);
-    };
+};
+
 #endif

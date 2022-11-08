@@ -331,6 +331,7 @@ int BigDecimalInt :: sign()
     {
         return 0;
     }
+   
 }
 
 // operator << overloading function.
