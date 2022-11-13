@@ -6,6 +6,7 @@
 #include "BigDecimalIntClass.h"
 #include <iostream>
 #include <string>
+#include <regex>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ class BigReal
 private:
     BigDecimalInt beforePoint;
     BigDecimalInt afterPoint;
-    
+    bool checkValidity(string input);
 
 public:
     void getNum();

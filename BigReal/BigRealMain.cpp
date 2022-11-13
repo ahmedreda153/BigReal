@@ -7,8 +7,8 @@ using namespace std;
 
 int main()
 {
-BigReal a("-32594.215");
-    BigReal b("-7584.321897");
+    BigReal a("2.2");
+    BigReal b(".1");
     // BigDecimalInt c("123");
     // BigReal d(c);
     // BigReal e = a;
@@ -24,8 +24,9 @@ BigReal a("-32594.215");
     // f.getNum();
     // g.getNum();
     // h.getNum();
-    BigReal q = a - b;
-    q.getNum();
+    // BigReal q = a + b;
+    cout << a << endl;
+    cout << b;
     return 0;
 }
 //add number to left side in afterpoint

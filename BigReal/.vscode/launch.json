@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "f:/OOP/Assignment2/BigReal",
-      "program": "f:/OOP/Assignment2/BigReal/build/Debug/outDebug",
+      "cwd": "f:/OOP/Assignment2/Assignment-2/BigReal",
+      "program": "f:/OOP/Assignment2/Assignment-2/BigReal/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

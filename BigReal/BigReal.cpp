@@ -8,54 +8,72 @@ void BigReal::getNum()
     cout << beforePoint.getNumber() + "." + afterPoint.getNumber() << endl;
 }
 
+bool BigReal::checkValidity(string input)
+{
+    regex validInput("[-+]?[0-9]*[.][0-9]*");
+    return regex_match(input, validInput);
+}
+
 BigReal::BigReal(double realNumber = 0.0)
 {
-    cout << "Default constructor" << endl;
+    // cout << "Default constructor" << endl;
     string str = to_string(realNumber);
     while (str[str.length() - 1] == '0')
     {
         str.erase(str.length() - 1);
     }
     int index = str.find('.');
-    // if(str[0]=='-'){
-    // afterPoint+=BigDecimalInt("-");
-    // }
     beforePoint.setNumber(str.substr(0, index));
     afterPoint.setNumber(str.substr(index + 1, str.length() - 1));
 }
 
 BigReal::BigReal(string realNumber)
 {
-    cout << "string default constructor" << endl;
-    int index = realNumber.find('.');
-    beforePoint.setNumber(realNumber.substr(0, index));
-    afterPoint.setNumber(realNumber.substr(index + 1, realNumber.length() - 1));
+    // cout << "string default constructor" << endl;
+    if (checkValidity(realNumber))
+    {
+        int index = realNumber.find('.');
+        beforePoint.setNumber(realNumber.substr(0, index));
+        afterPoint.setNumber(realNumber.substr(index + 1, realNumber.length() - 1));
+        if (afterPoint.getNumber() == "")
+        {
+            afterPoint.setNumber("0");
+        }
+        else if(beforePoint.getNumber()==""){
+            beforePoint.setNumber("0");
+        }
+    }
+    else
+    {
+        cout << "Invalid input" << endl;
+        exit(1);
+    }
 }
 
 BigReal::BigReal(BigDecimalInt bigInteger)
 {
-    cout << "BigDecimalInt default constructor" << endl;
+    // cout << "BigDecimalInt default constructor" << endl;
     beforePoint = bigInteger;
     afterPoint.setNumber("0");
 }
 
 BigReal::BigReal(const BigReal &other) // Copy constructor
 {
-    cout << "Copy constructor" << endl;
+    // cout << "Copy constructor" << endl;
     beforePoint = other.beforePoint;
     afterPoint = other.afterPoint;
 }
 
 BigReal::BigReal(BigReal &&other) // Move constructor
 {
-    cout << "Move constructor" << endl;
+    // cout << "Move constructor" << endl;
     beforePoint = other.beforePoint;
     afterPoint = other.afterPoint;
 }
 
 BigReal &BigReal::operator=(BigReal &other) // Assignment operator
 {
-    cout << "Assignment operator" << endl;
+    // cout << "Assignment operator" << endl;
     beforePoint = other.beforePoint;
     afterPoint = other.afterPoint;
     return *this;
@@ -63,7 +81,7 @@ BigReal &BigReal::operator=(BigReal &other) // Assignment operator
 
 BigReal &BigReal::operator=(BigReal &&other) // Move assignment operator
 {
-    cout << "Move assignment operator" << endl;
+    // cout << "Move assignment operator" << endl;
     beforePoint = other.beforePoint;
     afterPoint = other.afterPoint;
     return *this;
@@ -268,7 +286,7 @@ BigReal BigReal::operator-(BigReal other)
                 result.afterPoint = afterPoint - other.afterPoint;
                 result.beforePoint = result.beforePoint - a;
             }
-            cout<<"-";
+            cout << "-";
         }
         else if (beforePoint < other.beforePoint)
         {
@@ -300,7 +318,6 @@ void BigReal::sum(BigReal &res, BigReal &other)
     {
         res.beforePoint = beforePoint + other.beforePoint + a;
         res.afterPoint.setNumber(res.afterPoint.getNumber().substr(1, res.afterPoint.getNumber().length() - 1));
-
     }
     else if (afterPoint.getNumber().length() == other.afterPoint.getNumber().length())
     {
@@ -316,16 +333,6 @@ void BigReal::sum(BigReal &res, BigReal &other)
         }
     }
 }
-
-    
-   
-   
-   
-  
-
-
-
-
 
 bool BigReal::operator<(BigReal other)
 {
@@ -385,7 +392,8 @@ bool BigReal::operator==(BigReal other)
 
 int BigReal::size()
 {
-    cout << beforePoint << endl << afterPoint << endl; // test
+    cout << beforePoint << endl
+         << afterPoint << endl; // test
     return beforePoint.size() + afterPoint.size();
 }
 
