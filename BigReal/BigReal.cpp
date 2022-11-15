@@ -115,13 +115,11 @@ BigReal BigReal::operator+(BigReal other)
             afterPoint.setNumber(afterPoint.getNumber() + "0");
         }
     }
+    
     if (x == y)
     {
         sum(result, other);
-    }
-
-    else if (x == y && x == 1)
-    {
+        if(x==1)
         cout << '-';
     }
 

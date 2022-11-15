@@ -97,7 +97,7 @@ SavingsBankAcc::SavingsBankAcc()
     minimumBalance = 1000;
 }
 
-double SavingsBankAcc::setMinimumBalance(double min)
+void SavingsBankAcc::setMinimumBalance(double min)
 {
     minimumBalance = min;
 }
