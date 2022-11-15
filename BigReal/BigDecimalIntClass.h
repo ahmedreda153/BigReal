@@ -49,3 +49,4 @@ public:
 };
 
 #endif //BIGDECIMALINT_BIGDECIMALINTCLASS_H
+operator=(anotherDec : BigDecimalInt) : BigDecimalInt()
